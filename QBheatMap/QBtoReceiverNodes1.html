@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+.link {
+  fill: none;
+  stroke: #666;
+  stroke-width: 1.5px;
+}
+
+#licensing {
+  fill: green;
+}
+
+.link.licensing {
+  stroke: green;
+}
+
+.link.resolved {
+  stroke-dasharray: 0,2 1;
+}
+
+circle {
+  fill: #ccc;
+  stroke: #333;
+  stroke-width: 1.5px;
+}
+
+text {
+  font: 10px sans-serif;
+  pointer-events: none;
+  text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, 0 -1px 0 #fff, -1px 0 0 #fff;
+}
+
+</style>
+<body>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script>
+
+var links = [
+ {QBR: '93.4', qb: 'Tony Romo', receiver: 'Cole Beasley'},
+ {QBR: '76.4', qb: 'Tony Romo', receiver: 'DeMarco Murray'},
+ {QBR: '118.8', qb: 'Tony Romo', receiver: 'Tyler Clutts'},
+ {QBR: '87.5', qb: 'Tony Romo', receiver: 'Dwayne Harris'},
+ {QBR: '106.5', qb: 'Tony Romo', receiver: 'Jason Witten'},
+ {QBR: '0', qb: 'Tony Romo', receiver: 'Gavin Escobar'},
+ {QBR: '117.9', qb: 'Tony Romo', receiver: 'Dez Bryant'},
+ {QBR: '135.4', qb: 'Tony Romo', receiver: 'Terrance Williams'},
+ {QBR: '51.3', qb: 'Andrew Luck', receiver: 'T.Y. Hilton'},
+ {QBR: '11.3', qb: 'Andrew Luck', receiver: 'Zurlon Tipton'},
+ {QBR: '84.4', qb: 'Andrew Luck', receiver: 'Coby Fleener'},
+ {QBR: '121.2', qb: 'Andrew Luck', receiver: 'Dwayne Allen'},
+ {QBR: '39.6', qb: 'Andrew Luck', receiver: 'Reggie Wayne'},
+ {QBR: '70.1', qb: 'Andrew Luck', receiver: 'Jack Doyle'},
+ {QBR: '54.9', qb: 'Andrew Luck', receiver: 'Donte Moncrief'},
+ {QBR: '89.9', qb: 'Andrew Luck', receiver: 'Daniel Herron'},
+ {QBR: '155.2', qb: 'Andrew Luck', receiver: 'Hakeem Nicks'},
+ {QBR: '98.4', qb: 'Matthew Stafford', receiver: 'Calvin Johnson'},
+ {QBR: '0', qb: 'Matthew Stafford', receiver: 'Jeremy Ross'},
+ {QBR: '64.6', qb: 'Matthew Stafford', receiver: 'Reggie Bush'},
+ {QBR: '66.7', qb: 'Matthew Stafford', receiver: 'Brandon Pettigrew'},
+ {QBR: '93.8', qb: 'Matthew Stafford', receiver: 'Corey Fuller'},
+ {QBR: '95.8', qb: 'Matthew Stafford', receiver: 'Eric Ebron'},
+ {QBR: '96.3', qb: 'Matthew Stafford', receiver: 'Golden Tate'},
+ {QBR: '110.4', qb: 'Matthew Stafford', receiver: 'Joique Bell'},
+ {QBR: '72.9', qb: 'Matthew Stafford', receiver: 'Theo Riddick'},
+ {QBR: '56.3', qb: 'Peyton Manning', receiver: 'Virgil Green'},
+ {QBR: '98.2', qb: 'Peyton Manning', receiver: 'Julius Thomas'},
+ {QBR: '0', qb: 'Peyton Manning', receiver: 'Andre Caldwell'},
+ {QBR: '85.4', qb: 'Peyton Manning', receiver: 'Wes Welker'},
+ {QBR: '53.8', qb: 'Peyton Manning', receiver: 'Emmanuel Sanders'},
+ {QBR: '85.1', qb: 'Peyton Manning', receiver: 'Demaryius Thomas'},
+ {QBR: '86.8', qb: 'Peyton Manning', receiver: 'C.J. Anderson'},
+ {QBR: '82.9', qb: 'Andy Dalton', receiver: 'Ryan Hewitt'},
+ {QBR: '113.9', qb: 'Andy Dalton', receiver: 'Rex Burkhead'},
+ {QBR: '0', qb: 'Andy Dalton', receiver: 'Brandon Tate'},
+ {QBR: '0', qb: 'Andy Dalton', receiver: 'Greg Little'},
+ {QBR: '58.3', qb: 'Andy Dalton', receiver: 'Kevin Brock'},
+ {QBR: '88', qb: 'Andy Dalton', receiver: 'Giovani Bernard'},
+ {QBR: '56.3', qb: 'Andy Dalton', receiver: 'Mohamed Sanu'},
+ {QBR: '0', qb: 'Andy Dalton', receiver: 'Cobi Hamilton'},
+ {QBR: '0', qb: 'Russell Wilson', receiver: 'Kevin Norwood'},
+ {QBR: '100', qb: 'Russell Wilson', receiver: 'Will Tukuafu'},
+ {QBR: '93.1', qb: 'Russell Wilson', receiver: 'Jermaine Kearse'},
+ {QBR: '87', qb: 'Russell Wilson', receiver: 'Marshawn Lynch'},
+ {QBR: '56.3', qb: 'Russell Wilson', receiver: 'Robert Turbin'},
+ {QBR: '87.5', qb: 'Russell Wilson', receiver: 'Paul Richardson'},
+ {QBR: '0', qb: 'Russell Wilson', receiver: 'Cooper Helfet'},
+ {QBR: '144.9', qb: 'Russell Wilson', receiver: 'Doug Baldwin'},
+ {QBR: '158.3', qb: 'Russell Wilson', receiver: 'Chris Matthews'},
+ {QBR: '0', qb: 'Russell Wilson', receiver: 'Bryan Walters'},
+ {QBR: '59.7', qb: 'Russell Wilson', receiver: 'Ricardo Lockette'},
+ {QBR: '131.3', qb: 'Russell Wilson', receiver: 'Luke Willson'},
+ {QBR: '158.3', qb: 'Cam Newton', receiver: 'Fozzy Whittaker'},
+ {QBR: '91.1', qb: 'Cam Newton', receiver: 'Greg Olsen'},
+ {QBR: '24.4', qb: 'Cam Newton', receiver: 'Jerricho Cotchery'},
+ {QBR: '38.1', qb: 'Cam Newton', receiver: 'Ed Dickson'},
+ {QBR: '25.2', qb: 'Cam Newton', receiver: 'Philly Brown'},
+ {QBR: '102.1', qb: 'Cam Newton', receiver: 'Brenton Bersin'},
+ {QBR: '79.2', qb: 'Cam Newton', receiver: 'DeAngelo Williams'},
+ {QBR: '121.7', qb: 'Cam Newton', receiver: 'Kelvin Benjamin'},
+ {QBR: '79.2', qb: 'Cam Newton', receiver: 'Jonathan Stewart'},
+ {QBR: '99', qb: 'Cam Newton', receiver: 'Mike Tolbert'},
+ {QBR: '107.3', qb: 'Joe Flacco', receiver: 'Michael Campanaro'},
+ {QBR: '145.1', qb: 'Joe Flacco', receiver: 'Steve Smith Sr.'},
+ {QBR: '111.7', qb: 'Joe Flacco', receiver: 'Justin Forsett'},
+ {QBR: '79.2', qb: 'Joe Flacco', receiver: 'Fitzgerald Toussaint'},
+ {QBR: '129.2', qb: 'Joe Flacco', receiver: 'Kamar Aiken'},
+ {QBR: '158.3', qb: 'Joe Flacco', receiver: 'Crockett Gillmore'},
+ {QBR: '78.5', qb: 'Joe Flacco', receiver: 'Kyle Juszczyk'},
+ {QBR: '93.5', qb: 'Joe Flacco', receiver: 'Owen Daniels'},
+ {QBR: '56.3', qb: 'Joe Flacco', receiver: 'Torrey Smith'},
+ {QBR: '79.2', qb: 'Joe Flacco', receiver: 'Jacoby Jones'},
+ {QBR: '72.1', qb: 'Joe Flacco', receiver: 'Marlon Brown'},
+ {QBR: '0', qb: 'Bruce Gradkowski', receiver: 'Martavis Bryant'},
+ {QBR: '83.3', qb: 'Bruce Gradkowski', receiver: 'Antonio Brown'},
+ {QBR: '118.8', qb: 'Bruce Gradkowski', receiver: 'Heath Miller'},
+ {QBR: '158.3', qb: 'Tom Brady', receiver: 'Nate Solder'},
+ {QBR: '112.5', qb: 'Tom Brady', receiver: 'Brandon Bolden'},
+ {QBR: '121.1', qb: 'Tom Brady', receiver: 'Danny Amendola'},
+ {QBR: '95.2', qb: 'Tom Brady', receiver: 'Shane Vereen'},
+ {QBR: '103.5', qb: 'Tom Brady', receiver: 'Michael Hoomanawanui'},
+ {QBR: '90', qb: 'Tom Brady', receiver: 'Julian Edelman'},
+ {QBR: '114.4', qb: 'Tom Brady', receiver: 'Brandon LaFell'},
+ {QBR: '120.8', qb: 'Tom Brady', receiver: 'James Develin'},
+ {QBR: '65.2', qb: 'Tom Brady', receiver: 'Rob Gronkowski'},
+ {QBR: '158.3', qb: 'Julian Edelman', receiver: 'Danny Amendola'},
+ {QBR: '158.3', qb: 'Jon Ryan', receiver: 'Garry Gilliam'},
+ {QBR: '57.5', qb: 'Ben Roethlisberger', receiver: 'Antonio Brown'},
+ {QBR: '79.2', qb: 'Ben Roethlisberger', receiver: 'Josh Harris'},
+ {QBR: '125.5', qb: 'Ben Roethlisberger', receiver: 'Martavis Bryant'},
+ {QBR: '80.2', qb: 'Ben Roethlisberger', receiver: 'Dri Archer'},
+ {QBR: '30.6', qb: 'Ben Roethlisberger', receiver: 'Ben Tate'},
+ {QBR: '84.4', qb: 'Ben Roethlisberger', receiver: 'Heath Miller'},
+ {QBR: '91.7',
+  qb: 'Ben Roethlisberger',
+  receiver: 'Darrius Heyward-Bey'},
+ {QBR: '112.5', qb: 'Ben Roethlisberger', receiver: 'Markus Wheaton'},
+ {QBR: '93', qb: 'Aaron Rodgers', receiver: 'Randall Cobb'},
+ {QBR: '132.1', qb: 'Aaron Rodgers', receiver: 'Andrew Quarless'},
+ {QBR: '71.5', qb: 'Aaron Rodgers', receiver: 'John Kuhn'},
+ {QBR: '39.6', qb: 'Aaron Rodgers', receiver: 'Eddie Lacy'},
+ {QBR: '139.6', qb: 'Aaron Rodgers', receiver: 'Richard Rodgers'},
+ {QBR: '76.8', qb: 'Aaron Rodgers', receiver: 'Jordy Nelson'},
+ {QBR: '42.4', qb: 'Aaron Rodgers', receiver: 'James Starks'},
+ {QBR: '80.7', qb: 'Aaron Rodgers', receiver: 'Davante Adams'},
+ {QBR: '9.9', qb: 'Ryan Lindley', receiver: 'Larry Fitzgerald'},
+ {QBR: '90.6', qb: 'Ryan Lindley', receiver: 'John Carlson'},
+ {QBR: '0', qb: 'Ryan Lindley', receiver: 'Rob Housler'},
+ {QBR: '0', qb: 'Ryan Lindley', receiver: 'Ted Ginn Jr.'},
+ {QBR: '0', qb: 'Ryan Lindley', receiver: 'Jaron Brown'},
+ {QBR: '62.5', qb: 'Ryan Lindley', receiver: 'Michael Floyd'},
+ {QBR: '95', qb: 'Ryan Lindley', receiver: 'John Brown'},
+ {QBR: '118.8', qb: 'Ryan Lindley', receiver: 'Darren Fells'},
+ {QBR: '79.2', qb: 'Ryan Lindley', receiver: 'Kerwynn Williams'},
+ {QBR: '91.7', qb: 'Ryan Lindley', receiver: 'Robert Hughes'}];
+
+var nodes = {};
+
+// Compute the distinct nodes from the links.
+links.forEach(function(link) {
+  link.source = nodes[link.qb] || (nodes[link.qb] = {name: link.qb});
+  link.target = nodes[link.recevier] || (nodes[link.recevier] = {name: link.recevier});
+});
+
+var width = 960,
+    height = 500;
+
+var force = d3.layout.force()
+    .nodes(d3.values(nodes))
+    .links(links)
+    .size([width, height])
+    .linkDistance(60)
+    .charge(-300)
+    .on("tick", tick)
+    .start();
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+// Per-QBR markers, as they don't inherit styles.
+svg.append("defs").selectAll("marker")
+    .data(["suit", "licensing", "resolved"])
+  .enter().append("marker")
+    .attr("id", function(d) { return d; })
+    .attr("viewBox", "0 -5 10 10")
+    .attr("refX", 15)
+    .attr("refY", -1.5)
+    .attr("markerWidth", 6)
+    .attr("markerHeight", 6)
+    .attr("orient", "auto")
+  .append("path")
+    .attr("d", "M0,-5L10,0L0,5");
+
+var path = svg.append("g").selectAll("path")
+    .data(force.links())
+  .enter().append("path")
+    .attr("class", function(d) { return "link " + d.QBR; })
+    .attr("marker-end", function(d) { return "url(#" + d.QBR + ")"; });
+
+var circle = svg.append("g").selectAll("circle")
+    .data(force.nodes())
+  .enter().append("circle")
+    .attr("r", 6)
+    .call(force.drag);
+
+var text = svg.append("g").selectAll("text")
+    .data(force.nodes())
+  .enter().append("text")
+    .attr("x", 8)
+    .attr("y", ".31em")
+    .text(function(d) { return d.name; });
+
+// Use elliptical arc path segments to doubly-encode directionality.
+function tick() {
+  path.attr("d", linkArc);
+  circle.attr("transform", transform);
+  text.attr("transform", transform);
+}
+
+function linkArc(d) {
+  var dx = d.target.x - d.source.x,
+      dy = d.target.y - d.source.y,
+      dr = Math.sqrt(dx * dx + dy * dy);
+  return "M" + d.source.x + "," + d.source.y + "A" + dr + "," + dr + " 0 0,1 " + d.target.x + "," + d.target.y;
+}
+
+function transform(d) {
+  return "translate(" + d.x + "," + d.y + ")";
+}
+
+</script>

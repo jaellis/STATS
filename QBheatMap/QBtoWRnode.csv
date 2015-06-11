@@ -1,0 +1,115 @@
+"PASSER","RECEIVER","TEAM","TARGETS","COMPS","TDS","INTS","AVG_AIRYARDS","YDS_AFTER_CATCH","YDS","COMP_PRCNT","QB_RATING"
+"Russell Wilson","Jermaine Kearse","Seattle",15,7,2,4,20.6,9.3,209,46.7,93.1
+"Tom Brady","Rob Gronkowski","New England",31,16,3,3,8,4.8,204,51.6,65.2
+"Andrew Luck","Donte Moncrief","Indianapolis",12,5,1,2,15.2,2,86,41.7,54.9
+"Joe Flacco","Torrey Smith","Baltimore",12,5,1,2,16,2,90,41.7,56.3
+"Ryan Lindley","Larry Fitzgerald","Arizona",8,3,0,2,7.3,3,31,37.5,9.9
+"Tom Brady","Julian Edelman","New England",37,26,1,1,5.7,5.1,281,70.3,90
+"Aaron Rodgers","Randall Cobb","Green Bay",21,15,1,1,7.3,4.6,178,71.4,93
+"Andrew Luck","T.Y. Hilton","Indianapolis",28,11,0,1,13.6,5.5,211,39.3,51.3
+"Aaron Rodgers","Davante Adams","Green Bay",14,8,1,1,5.1,10.4,124,57.1,80.7
+"Ben Roethlisberger","Antonio Brown","Pittsburgh",13,8,0,1,10.6,3.5,113,61.5,57.5
+"Cam Newton","Jerricho Cotchery","Carolina",11,6,0,1,5,1.5,39,54.5,24.4
+"Matthew Stafford","Golden Tate","Detroit",9,6,1,1,6.3,8.5,89,66.7,96.3
+"Russell Wilson","Ricardo Lockette","Seattle",9,6,0,1,11.8,3.2,90,66.7,59.7
+"Cam Newton","Philly Brown","Carolina",11,5,0,1,9.8,2.4,61,45.5,25.2
+"Andrew Luck","Zurlon Tipton","Indianapolis",7,3,0,1,0.7,6.7,22,42.9,11.3
+"Cam Newton","Ed Dickson","Carolina",7,3,0,1,8.7,13.7,67,42.9,38.1
+"Ben Roethlisberger","Ben Tate","Pittsburgh",3,2,0,1,0.5,4,9,66.7,30.6
+"Andrew Luck","Daniel Herron","Indianapolis",23,20,0,0,-0.2,6.6,128,87,89.9
+"Tom Brady","Shane Vereen","New England",21,18,0,0,3.3,4.7,144,85.7,95.2
+"Tom Brady","Brandon LaFell","New England",20,13,2,0,6.5,2.7,119,65,114.4
+"Andrew Luck","Dwayne Allen","Indianapolis",13,11,1,0,4.3,3.9,90,84.6,121.2
+"Cam Newton","Kelvin Benjamin","Carolina",17,11,2,0,6.7,3.1,108,64.7,121.7
+"Tony Romo","Jason Witten","Dallas",14,11,0,0,7,5.2,134,78.6,106.5
+"Russell Wilson","Doug Baldwin","Seattle",14,10,2,0,9.7,5,147,71.4,144.9
+"Tom Brady","Danny Amendola","New England",15,10,2,0,2.4,6.2,86,66.7,121.1
+"Andy Dalton","Giovani Bernard","Cincinnati",9,8,0,0,-0.5,6.3,46,88.9,88
+"Joe Flacco","Owen Daniels","Baltimore",16,8,1,0,7.8,6.1,111,50,93.5
+"Joe Flacco","Steve Smith Sr.","Baltimore",11,8,1,0,14.9,3.3,145,72.7,145.1
+"Aaron Rodgers","Jordy Nelson","Green Bay",13,7,0,0,9.9,3.4,93,53.8,76.8
+"Andrew Luck","Coby Fleener","Indianapolis",12,7,0,0,6.3,7.6,97,58.3,84.4
+"Cam Newton","Greg Olsen","Carolina",11,7,0,0,11.4,2.1,95,63.6,91.1
+"Peyton Manning","Emmanuel Sanders","Denver",15,7,0,0,4.3,2.3,46,46.7,53.8
+"Tony Romo","Cole Beasley","Dallas",11,7,0,0,4.9,9.6,101,63.6,93.4
+"Andrew Luck","Jack Doyle","Indianapolis",9,6,0,0,-0.2,4,23,66.7,70.1
+"Andrew Luck","Hakeem Nicks","Indianapolis",8,6,1,0,12,4.3,98,75,155.2
+"Joe Flacco","Kyle Juszczyk","Baltimore",9,6,0,0,2,5.5,45,66.7,78.5
+"Joe Flacco","Marlon Brown","Baltimore",10,6,0,0,5.7,2.3,48,60,72.1
+"Peyton Manning","Julius Thomas","Denver",7,6,0,0,6.3,2.5,53,85.7,98.2
+"Peyton Manning","C.J. Anderson","Denver",6,6,0,0,0.7,4.2,29,100,86.8
+"Russell Wilson","Luke Willson","Seattle",9,6,1,0,4,9.2,79,66.7,131.3
+"Tom Brady","Michael Hoomanawanui","New England",6,6,0,0,5.8,3,53,100,103.5
+"Tony Romo","Dez Bryant","Dallas",7,6,0,0,5.3,9,86,85.7,117.9
+"Aaron Rodgers","Richard Rodgers","Green Bay",6,5,1,0,7.8,1.8,48,83.3,139.6
+"Ben Roethlisberger","Heath Miller","Pittsburgh",8,5,0,0,7.8,3.8,58,62.5,84.4
+"Ben Roethlisberger","Markus Wheaton","Pittsburgh",6,5,0,0,8,5.2,66,83.3,112.5
+"Ben Roethlisberger","Martavis Bryant","Pittsburgh",8,5,1,0,9,3.2,61,62.5,125.5
+"Matthew Stafford","Calvin Johnson","Detroit",8,5,0,0,11.4,5.6,85,62.5,98.4
+"Peyton Manning","Demaryius Thomas","Denver",12,5,1,0,8.8,3,59,41.7,85.1
+"Russell Wilson","Marshawn Lynch","Seattle",8,5,0,0,6.6,6,63,62.5,87
+"Aaron Rodgers","Andrew Quarless","Green Bay",5,4,1,0,2.5,5.3,31,80,132.1
+"Joe Flacco","Michael Campanaro","Baltimore",4,4,0,0,4.5,5.3,39,100,107.3
+"Matthew Stafford","Theo Riddick","Detroit",7,4,0,0,0,9.8,39,57.1,72.9
+"Matthew Stafford","Joique Bell","Detroit",4,4,0,0,-1.8,12.3,42,100,110.4
+"Russell Wilson","Chris Matthews","Seattle",5,4,1,0,24,3.3,109,80,158.3
+"Ryan Lindley","John Brown","Arizona",5,4,0,0,4.3,4.3,34,80,95
+"Tony Romo","Terrance Williams","Dallas",8,4,3,0,8,24.5,130,50,135.4
+"Tony Romo","DeMarco Murray","Dallas",6,4,0,0,0.3,6.5,27,66.7,76.4
+"Andy Dalton","Mohamed Sanu","Cincinnati",7,3,0,0,4.7,5.7,31,42.9,56.3
+"Andy Dalton","Ryan Hewitt","Cincinnati",5,3,0,0,4.7,7.7,37,60,82.9
+"Andy Dalton","Rex Burkhead","Cincinnati",3,3,0,0,3.3,8,34,100,113.9
+"Ben Roethlisberger","Dri Archer","Pittsburgh",4,3,0,0,1.7,3.3,15,75,80.2
+"Joe Flacco","Justin Forsett","Baltimore",5,3,1,0,-2.3,10.3,24,60,111.7
+"Matthew Stafford","Reggie Bush","Detroit",5,3,0,0,-1.3,4.7,10,60,64.6
+"Matthew Stafford","Eric Ebron","Detroit",3,3,0,0,0.7,6.3,21,100,95.8
+"Ryan Lindley","John Carlson","Arizona",4,3,0,0,8.3,0,25,75,90.6
+"Ryan Lindley","Kerwynn Williams","Arizona",3,3,0,0,-2.3,2.3,0,100,79.2
+"Aaron Rodgers","John Kuhn","Green Bay",3,2,0,0,-0.5,5.5,10,66.7,71.5
+"Ben Roethlisberger","Josh Harris","Pittsburgh",2,2,0,0,-4,7,6,100,79.2
+"Cam Newton","Brenton Bersin","Carolina",2,2,0,0,3.5,5,17,100,102.1
+"Cam Newton","Jonathan Stewart","Carolina",2,2,0,0,-5.5,6,1,100,79.2
+"Cam Newton","Mike Tolbert","Carolina",4,2,1,0,-1,8.5,15,50,99
+"Cam Newton","DeAngelo Williams","Carolina",2,2,0,0,-2.5,3.5,2,100,79.2
+"Joe Flacco","Kamar Aiken","Baltimore",3,2,1,0,4,7.5,23,66.7,129.2
+"Joe Flacco","Crockett Gillmore","Baltimore",2,2,1,0,1.5,13.5,30,100,158.3
+"Matthew Stafford","Corey Fuller","Detroit",3,2,0,0,6.5,6.5,26,66.7,93.8
+"Tom Brady","James Develin","New England",2,2,1,0,1.5,2,7,100,120.8
+"Aaron Rodgers","Eddie Lacy","Green Bay",4,1,0,0,1,9,10,25,39.6
+"Aaron Rodgers","James Starks","Green Bay",3,1,0,0,-1,1,0,33.3,42.4
+"Andrew Luck","Reggie Wayne","Indianapolis",5,1,0,0,7,5,12,20,39.6
+"Andy Dalton","Kevin Brock","Cincinnati",2,1,0,0,5,2,7,50,58.3
+"Ben Roethlisberger","Darrius Heyward-Bey","Pittsburgh",1,1,0,0,6,0,6,100,91.7
+"Bruce Gradkowski","Antonio Brown","Pittsburgh",1,1,0,0,4,0,4,100,83.3
+"Bruce Gradkowski","Heath Miller","Pittsburgh",1,1,0,0,7,11,18,100,118.8
+"Cam Newton","Fozzy Whittaker","Carolina",1,1,1,0,-6,45,39,100,158.3
+"Joe Flacco","Fitzgerald Toussaint","Baltimore",1,1,0,0,-7,0,-7,100,79.2
+"Joe Flacco","Jacoby Jones","Baltimore",1,1,0,0,-1,4,3,100,79.2
+"Jon Ryan","Garry Gilliam","Seattle",1,1,1,0,19,0,19,100,158.3
+"Julian Edelman","Danny Amendola","New England",1,1,1,0,32,19,51,100,158.3
+"Matthew Stafford","Brandon Pettigrew","Detroit",2,1,0,0,4,7,11,50,66.7
+"Peyton Manning","Wes Welker","Denver",2,1,0,0,4,16,20,50,85.4
+"Peyton Manning","Virgil Green","Denver",2,1,0,0,2,2,4,50,56.3
+"Russell Wilson","Paul Richardson","Seattle",2,1,0,0,9,12,21,50,87.5
+"Russell Wilson","Robert Turbin","Seattle",2,1,0,0,-5,3,-2,50,56.3
+"Russell Wilson","Will Tukuafu","Seattle",1,1,0,0,2,6,8,100,100
+"Ryan Lindley","Michael Floyd","Arizona",2,1,0,0,8,1,9,50,62.5
+"Ryan Lindley","Darren Fells","Arizona",1,1,1,0,1,0,1,100,118.8
+"Ryan Lindley","Robert Hughes","Arizona",1,1,0,0,0,6,6,100,91.7
+"Tom Brady","Nate Solder","New England",1,1,1,0,3,13,16,100,158.3
+"Tom Brady","Brandon Bolden","New England",1,1,0,0,-3,14,11,100,112.5
+"Tony Romo","Tyler Clutts","Dallas",1,1,1,0,-1,2,1,100,118.8
+"Tony Romo","Dwayne Harris","Dallas",1,1,0,0,-3,8,5,100,87.5
+"Andy Dalton","Brandon Tate","Cincinnati",5,0,0,0,0,0,,0,0
+"Andy Dalton","Cobi Hamilton","Cincinnati",2,0,0,0,0,0,,0,0
+"Andy Dalton","Greg Little","Cincinnati",1,0,0,0,0,0,,0,0
+"Bruce Gradkowski","Martavis Bryant","Pittsburgh",1,0,0,0,0,0,,0,0
+"Matthew Stafford","Jeremy Ross","Detroit",1,0,0,0,0,0,,0,0
+"Peyton Manning","Andre Caldwell","Denver",1,0,0,0,0,0,,0,0
+"Russell Wilson","Cooper Helfet","Seattle",3,0,0,0,0,0,,0,0
+"Russell Wilson","Kevin Norwood","Seattle",1,0,0,0,0,0,,0,0
+"Russell Wilson","Bryan Walters","Seattle",1,0,0,0,0,0,,0,0
+"Ryan Lindley","Ted Ginn Jr.","Arizona",1,0,0,0,0,0,,0,0
+"Ryan Lindley","Rob Housler","Arizona",2,0,0,0,0,0,,0,0
+"Ryan Lindley","Jaron Brown","Arizona",1,0,0,0,0,0,,0,0
+"Tony Romo","Gavin Escobar","Dallas",2,0,0,0,0,0,,0,0

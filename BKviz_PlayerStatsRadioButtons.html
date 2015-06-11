@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  position: relative;
+  width: 960px;
+}
+
+.axis text {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.bar {
+  fill: steelblue;
+  fill-opacity: .9;
+}
+
+.x.axis path {
+  display: none;
+}
+
+#radioButtons {
+  right:10%;
+  height:300;
+  width: 50;
+}
+
+/*label {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}*/
+
+</style>
+<div id="radioButtons"></div>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script>
+
+var margin = {top: 20, right: 20, bottom: 30, left: 40},
+    width = 960 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
+
+var formatPercent = d3.format(".0%");
+
+var x = d3.scale.ordinal()
+    .rangeRoundBands([0, width], .1, 1);
+
+var y = d3.scale.linear()
+    .range([height, 0]);
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom");
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left")
+    .tickFormat(formatPercent);
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+var data;
+
+d3.json("WizStats.json", function(error, data) {
+  if (error) return console.warn(error);
+
+  var players = Object.keys(data);
+  var stats = Object.keys(data[players[0]]);
+console.log("players:",players);
+console.log("stats:",stats);
+
+  x.domain(Object.keys(data[players[0]]));
+  // y.domain([0, 1]);//d3.max(data, function() { return ; })]);
+  y.domain([0, 1]);//d3.max(data, function() { return ; })]);
+
+var preCheckedPlayers = [players[6],players[10]]
+//  Create radio buttons
+var labels = d3.select("#radioButtons").selectAll("label")
+    .data(players)
+    .enter()
+    .append("label")
+    .text(function(d) { return d;})
+    .insert("input")
+    .attr({
+      type:"checkbox"
+      ,class:"shape"
+      ,name: "mode"
+      ,value: function(d, i) { return i;}
+    })
+    .property("checked", function(d, i) { return d===preCheckedPlayers[0] || d===preCheckedPlayers[1]; });
+
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
+
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+    .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("Percentage");
+
+  svg.selectAll(".bar")
+      .data(data)
+    .enter().append("bar")
+      // .attr("class", "bar")
+      .attr("x",0)// function(i) { return x(stats[i]); })
+      .attr("width", x.rangeBand())
+      .attr("y", 0)//function(d) { return y(d.frequency); })
+      .attr("height",100);
+      // .attr("height", function(d) { return height - y(d.frequency); });
+      // .attr("height", function (data) {
+      //   console.log(data);
+      //   for (ii in preCheckedPlayers) {
+          
+      //     for (d in data[ii]) {
+      //       return d            
+      //     }
+      //   }
+      // });
+
+  d3.select("input").on("change", change);
+
+  // var sortTimeout = setTimeout(function() {
+  //   d3.select("input").property("checked", true).each(change);
+  // }, 2000);
+
+
+  function changeData() {
+    var transition = svg.transition().duration(750),
+        delay = function(d, i) { return i * 50; };
+
+    transition.selectAll(".bar")
+        .delay(delay)
+        .attr("x", function(d) { return x0(d.letter); });
+
+  }
+
+  function change() {
+    clearTimeout(sortTimeout);
+
+    // Copy-on-write since tweens are evaluated after a delay.
+    var x0 = x.domain(data.sort(this.checked
+        ? function(a, b) { return b.frequency - a.frequency; }
+        : function(a, b) { return d3.ascending(a.letter, b.letter); })
+        .map(function(d) { return d.letter; }))
+        .copy();
+
+    svg.selectAll(".bar")
+        .sort(function(a, b) { return data[player] - x0(b.letter); });
+
+    var transition = svg.transition().duration(750),
+        delay = function(d, i) { return i * 50; };
+
+    transition.selectAll(".bar")
+        .delay(delay)
+        .attr("x", function(d) { return x0(d.letter); });
+
+    transition.select(".x.axis")
+        .call(xAxis)
+      .selectAll("g")
+        .delay(delay);
+  }
+});
+
+</script>
