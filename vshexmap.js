@@ -9,6 +9,7 @@
 (function () {
 
   var clipCounter = 0;
+  var layerCounter = 0;
 
   var BasketballShotChart = d3.chart('BasketballShotChart', {
 
@@ -277,8 +278,37 @@
           .attr("height", visibleCourtLength);
            
       // add layer
+      console.log('layer add - layerCounter: ',layerCounter);
+      console.log('hexagons' in this._layers);      
+
       this.layer('hexagons', layerBase, {
 
+        // OLD STUFF
+        // dataBind: function (data) {
+        //   // subset bins to ones that meet threshold parameters
+        //   var allHexbinPoints = hexbin(data);
+        //   var hexbinPoints = [];
+        //   var hexbinQuantities = [];
+        //   for (var i = 0, l = allHexbinPoints.length; i < l; ++i) {
+        //     var pts = allHexbinPoints[i];
+        //     var numPts = 0;
+        //     for (var j = 0, jl = pts.length; j < jl; ++j) {
+        //       numPts += pts[j].attempts || 1;
+        //     }
+        //     if (numPts > hexagonBinVisibleThreshold) hexbinPoints.push(pts);
+        //     if (numPts > hexagonRadiusThreshold) hexbinQuantities.push(numPts);
+        //   }
+
+        //   // create radius scale
+        //   radiusScale = d3.scale.quantile()
+        //     .domain(hexbinQuantities)
+        //     .range(hexagonRadiusSizes)
+
+        //   return this.append('g')
+        //     .attr('clip-path', 'url(#' + clipId + ')')
+        //     .selectAll('.shot-chart-hexagon')
+        //       .data(hexbinPoints);
+        // },
         dataBind: function (data) {
           // subset bins to ones that meet threshold parameters
           var allHexbinPoints = hexbin(data);
@@ -298,10 +328,8 @@
           radiusScale = d3.scale.quantile()
             .domain(hexbinQuantities)
             .range(hexagonRadiusSizes)
-
-          return this.append('g')
-            .attr('clip-path', 'url(#' + clipId + ')')
-            .selectAll('.hexagon')
+            
+          return this.selectAll('.shot-chart-hexagon')
               .data(hexbinPoints);
         },
 
@@ -312,13 +340,37 @@
 
         events: {
 
+          // OLD STUFF
+          // enter: function () {
+          //   this.attr('transform', function(d) { 
+          //     return "translate(" + d.x + "," + d.y + ")"; 
+          //   });
+          //   layerCounter+=1;
+          //   console.log('enter data level - layerCounter: ',layerCounter);
+          //   console.log('enter -- this: ', this);
+
+          //   return this;
+          // },
           enter: function () {
+            this.append('g')
+              .attr('clip-path', 'url(#' + clipId + ')')
+              .selectAll('.hexagon');
             this.attr('transform', function(d) { 
               return "translate(" + d.x + "," + d.y + ")"; 
             });
+            layerCounter+=1;
+            console.log('enter data level - layerCounter: ',layerCounter);
+            console.log('enter -- this: ', this);
+
+            return this;
+          },
+
+          update: function() {
+            var hex = this.selectAll('shot-chart-hexagon')
           },
 
           merge: function () {
+            console.log('in merge -- events');
             this
               .attr('d', function(d) { 
                 var val = radiusScale(hexagonRadiusValue(d))
@@ -327,10 +379,15 @@
               .style('fill', function(d) { 
                 return heatScale(hexagonFillValue(d)); 
               });
+              // this.exit().remove();
+              return this;
           },
 
           exit: function () {
+            console.log('call to exit');
             this.remove();
+
+            return this;
           }
 
         },
